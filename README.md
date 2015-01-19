@@ -38,6 +38,7 @@ Add this to your drupal_lamp.json that you would like to use.
     // Path to file
     "/srv/www/site_name/current/profiles/test/themes/test_bare":{
       // Ruby gems needed to compile
+      "active": true,
       "gems": [
         "bundler"
       ],
