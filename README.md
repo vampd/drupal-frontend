@@ -53,6 +53,7 @@ Add this to your drupal_lamp.json that you would like to use.
 ```
 
 ### Using Drupal Frontend with vampd
+The following will automatically install bundler, npm and grunt. It will then run the necessary commands to compile your theme. These should be adjusted to your theme. Also the path is relative to your site.
 
  - Add the following to your `Berksfile`:
 
@@ -67,7 +68,7 @@ cookbook "drupal-frontend", git: "https://github.com/vampd/drupal-frontend", tag
 "recipe[drupal-frontend]",
 ```
 
- - Add the following to your `site.jso` under `"override_attributes"`:
+ - Add the following to your `site.json` under `"override_attributes"`:
   
 ```
 "drupal_frontend": {
@@ -79,7 +80,7 @@ cookbook "drupal-frontend", git: "https://github.com/vampd/drupal-frontend", tag
       ],
       "commands": [
         "bundle install && bundle update",
-        "npm install --unsafe-perm",
+        "npm install",
         "grunt build"
       ]
     }
