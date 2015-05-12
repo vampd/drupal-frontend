@@ -52,10 +52,38 @@ Add this to your drupal_lamp.json that you would like to use.
 },
 ```
 
-### Drupal-frontend::bundler
-### Drupal-frontend::nodejs (Coming soon)
-### Drupal-frontend::grunt (Coming soon)
+### Using Drupal Frontend with vampd
 
+ - Add the following to your `Berksfile`:
+    ```
+    cookbook 'grunt_cookbook', git: 'git://github.com/MattSurabian/grunt_cookbook.git'
+    cookbook "drupal-frontend", git: "https://github.com/vampd/drupal-frontend", tag: "1.0.0"
+    ```
+ - Add the following to `base.json`:
+    ```
+    "recipe[grunt_cookbook]",
+    "recipe[drupal-frontend]",
+    ```
+ - Add the following to your site.json:
+    ```
+    "drupal_frontend": {
+      "css_preprocessor": {
+        "/srv/www/[site]/current/[path_to_theme]":{
+          "active": true,
+          "gems": [
+            "bundler"
+          ],
+          "commands": [
+            "bundle install && bundle update",
+            "npm install --unsafe-perm",
+            "grunt build"
+          ]
+        }
+      }
+    }
+    ```
+ - Delete `Berksfile.lock`
+ - Now reprovision your machine
 
 
 License and Author
