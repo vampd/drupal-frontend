@@ -67,7 +67,7 @@ cookbook "drupal-frontend", git: "https://github.com/vampd/drupal-frontend", tag
 "recipe[drupal-frontend]",
 ```
 
- - Add the following to your site.json:
+ - Add the following to your `site.jso` under `"override_attributes"`:
   
 ```
 "drupal_frontend": {
